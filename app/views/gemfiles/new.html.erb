@@ -1,0 +1,6 @@
+<%=form_for @gemfile do |f|%>
+  <%=f.label :source%>
+  <%=f.text_area :source, rows: 20, class: 'span8'%>
+  <br>
+  <%=f.submit 'Save Gemfile', class: 'btn btn-success'%>
+<%end%>
