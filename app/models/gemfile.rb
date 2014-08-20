@@ -1,21 +1,27 @@
 class Gemfile < ActiveRecord::Base
   has_many :gem_uses
 
-  validates :source, presence: true
-
-  before_save :extract_gem_uses
+  validate :extract_gem_uses
 
   private
 
   def extract_gem_uses
     included_gems = extract_gem_names_and_versions
     included_gems.each do |included_gem|
-        versioned_gem = VersionedGem.where(gem_name: included_gem[0],
-                                         gem_version: included_gem[1]).first_or_create
-        GemUse.create(versioned_gem: versioned_gem, gemfile_id: self.id)
+      gem_instance = GemInstance.find_by(name: included[0]) 
+        
+      if !gem_instance
+        gem_instance = GemInstance.new(name: included[0])
+        if !gem_instance.save
+          return false
+        end
+      end  
+
+      GemUse.create(gem_instance: gem_instance, version: included[1])
     end
+    return true
   end
-  
+
   def extract_gem_names_and_versions
     self.source.scan(/gem\s*'(\w*)'(?:,\s*('.*'))?/)
   end

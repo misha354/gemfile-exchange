@@ -1,3 +1,34 @@
-<%GemUse.where(gemfile_id: @gemfile.id).each do |gem_use|%>
-  gem '<%=link_to gem_use.gem_name, "http://www.rubygems.org/gems#{gem_use.gem_name}#{gem_use.gem_version}"
-<%end%>
+<%=render 'shared/header', header: "Gemfile for: #{@gemfile.name}"%>
+<h4>Gems used in this Gemfile</h4>
+<table class='table well'>
+  <tr>
+    <th>Gem name</th>
+    <th>Version specifiers<th>
+  </tr>
+  
+  <%@gem_uses.each do |gem_use|%>
+    <tr>
+      <td>
+        <%=link_to gem_use.versioned_gem.gem_name, 
+          versioned_gem_path(gem_use.versioned_gem)%>
+      </td>
+    
+      <td><%=gem_use.versioned_gem.gem_version%></td>
+    </tr>
+  <%end%>
+ </table>
+
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        <strong>Gemfile code</strong>
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%=@highlighted_code.html_safe%>
+      </div>
+    </div>
+  </div>
+</div>

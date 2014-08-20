@@ -17,6 +17,9 @@ class GemfilesController < ApplicationController
   
   def show
     @gemfile = Gemfile.find params[:id]
+    @gem_uses = GemUse.where(gemfile_id: @gemfile.id).each do |gem_use|
+    end
+
     @highlighted_code = display_source(@gemfile.source)
   end
 

@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819194322) do
+ActiveRecord::Schema.define(version: 20140820200614) do
+
+  create_table "gem_instances", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "gem_uses", force: true do |t|
     t.integer  "gemfile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "versioned_gem_id"
+    t.string   "version"
+    t.integer  "gem_id"
   end
 
   create_table "gemfiles", force: true do |t|
@@ -25,13 +32,7 @@ ActiveRecord::Schema.define(version: 20140819194322) do
     t.text     "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "versioned_gems", force: true do |t|
-    t.string   "gem_name"
-    t.string   "gem_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name"
   end
 
 end
