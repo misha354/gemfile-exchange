@@ -1,4 +1,3 @@
-  hi
-  <div class='span8'>
-    <%= @highlighted_code.html_safe%>
-</div>
+<%GemUse.where(gemfile_id: @gemfile.id).each do |gem_use|%>
+  gem '<%=link_to gem_use.gem_name, "http://www.rubygems.org/gems#{gem_use.gem_name}#{gem_use.gem_version}"
+<%end%>

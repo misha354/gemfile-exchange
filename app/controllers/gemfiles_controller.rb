@@ -3,9 +3,21 @@ class GemfilesController < ApplicationController
     @gemfile = Gemfile.new
   end
 
+  def create
+    @gemfile = Gemfile.new(gemfile_params)
+    
+    if @gemfile.save
+      flash[:notice] = 'Your Gemfile was saved.'
+      redirect_to gemfile_path(@gemfile)
+    else
+      render 'new'
+    end
+
+  end
+  
   def show
-    source = "if x < y require 'me' end"
-    @highlighted_code = display_source(source)
+    @gemfile = Gemfile.find params[:id]
+    @highlighted_code = display_source(@gemfile.source)
   end
 
   private 
@@ -14,5 +26,9 @@ class GemfilesController < ApplicationController
     formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
     lexer = Rouge::Lexers::Ruby.new
     formatter.format(lexer.lex(source))
+  end
+
+  def gemfile_params
+    params.require(:gemfile).permit(:source)
   end
   end
