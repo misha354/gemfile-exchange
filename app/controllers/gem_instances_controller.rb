@@ -4,7 +4,10 @@ class GemInstancesController < ApplicationController
   end
 
   def show
-    gem_instance = GemInstance.find(params[:id])
-    @gem_info = Gems.info(gem_instance.name)
+    @gem_instance = GemInstance.find(params[:id])
+    @gem_info = Gems.info(@gem_instance.name)
+
+    @gemfiles = @gem_instance.gemfiles
+
   end
 end

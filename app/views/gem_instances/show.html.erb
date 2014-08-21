@@ -3,6 +3,17 @@
   <dt>Description:</dt>
   <dd><%=@gem_info["info"]%></dd>
 
-  <dt>Most used version specifier:<dt>
-  <dd><dd>
+  <br>
+  <strong>Number of uses:</strong> <%=@gem_instance.num_uses%><br>
+  <br>
+
+  <strong>Most popular version specifier:</strong> 
+  <%=@gem_instance.most_popular_version%>
+  <br>
+
+  <br>
+  <strong>URL:</strong>
+  <%=link_to @gem_info["project_uri"], @gem_info["project_uri"]%>  
 </div>
+
+<h4>Gemfiles that use this gem</h4>
