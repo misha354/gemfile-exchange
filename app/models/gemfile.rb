@@ -40,6 +40,8 @@ class Gemfile < ActiveRecord::Base
         self.errors.add(:source, 'cannot be saved')
       end
     end
+
+    return gem_instance
   end
 
   def extract_gem_names_and_versions
@@ -47,7 +49,7 @@ class Gemfile < ActiveRecord::Base
   end
 
   def gem_name_and_version_regex
-    /gem\s*'(\w*)'(?:,\s*('.*'))?/
+    /gem\s*'(.*?)'(?:,\s*('.*'))?/
   end
 
   def validate_source

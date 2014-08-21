@@ -9,11 +9,10 @@
   <%@gem_uses.each do |gem_use|%>
     <tr>
       <td>
-        <%=link_to gem_use.versioned_gem.gem_name, 
-          versioned_gem_path(gem_use.versioned_gem)%>
+        <%=link_to gem_use.gem_instance.name, gem_path(gem_use.gem_instance)%>
       </td>
     
-      <td><%=gem_use.versioned_gem.gem_version%></td>
+      <td><%gem_use.version%></td>
     </tr>
   <%end%>
  </table>

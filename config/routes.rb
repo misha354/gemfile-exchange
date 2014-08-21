@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :gemfiles
-  resources :versioned_gems, only: [:show]
+
+  resources :gems, controller: :gem_instances, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
