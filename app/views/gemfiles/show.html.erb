@@ -1,5 +1,4 @@
-<%=render 'shared/header', header: "Gemfile for: #{@gemfile.name}"%>
-<h4>Gems used in this Gemfile</h4>
+<%=render 'shared/header', header: "Gems used by: #{@gemfile.name}"%>
 <table class='table well'>
   <tr>
     <th>Gem name</th>
@@ -12,7 +11,7 @@
         <%=link_to gem_use.gem_instance.name, gem_path(gem_use.gem_instance)%>
       </td>
     
-      <td><%gem_use.version%></td>
+      <td><%=gem_use.version%></td>
     </tr>
   <%end%>
  </table>

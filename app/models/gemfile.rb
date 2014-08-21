@@ -2,16 +2,16 @@ class Gemfile < ActiveRecord::Base
   has_many :gem_uses
 
   validate :validate_source
+  validates :name, presence: true
 
-  before_save :extract_gem_uses
-
-  private
+  after_save :extract_gem_uses
   
   GEM_NAME = 0
   GEM_VERSION = 1
 
   def extract_gem_uses
     included_gems = extract_gem_names_and_versions
+    GemUse.where(gemfile: self).destroy_all
 
     included_gems.each do |included_gem|
       gem_instance = create_gem_instance(included_gem[GEM_NAME])
@@ -45,7 +45,7 @@ class Gemfile < ActiveRecord::Base
   end
 
   def extract_gem_names_and_versions
-    self.source.scan(gem_name_and_version_regex)
+    self.source.gsub(/#.*$/,'').scan(gem_name_and_version_regex)
   end
 
   def gem_name_and_version_regex
@@ -57,4 +57,5 @@ class Gemfile < ActiveRecord::Base
       self.errors.add(:source, "does not contain any gems.")
     end
   end
+
 end

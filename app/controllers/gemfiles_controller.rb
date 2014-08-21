@@ -5,7 +5,6 @@ class GemfilesController < ApplicationController
 
   def create
     @gemfile = Gemfile.new(gemfile_params)
-    
     if @gemfile.save
       flash[:notice] = 'Your Gemfile was saved.'
       redirect_to gemfile_path(@gemfile)
@@ -32,6 +31,6 @@ class GemfilesController < ApplicationController
   end
 
   def gemfile_params
-    params.require(:gemfile).permit(:source)
+    params.require(:gemfile).permit(:source, :name)
   end
   end

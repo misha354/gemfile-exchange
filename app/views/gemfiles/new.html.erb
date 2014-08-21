@@ -1,7 +1,16 @@
 <%= render 'shared/errors', obj: @gemfile%>
 <%=form_for @gemfile do |f|%>
-  <%=f.label  :source, 'Post your Gemfile here', class: 'lead'%>
-  <%=f.text_area :source, rows: 20, class: 'span8'%>
+  <div class='control-group'>
+    <%=f.label :name, 'Application name:'%>
+    <%=f.text_field :name%>
+  </div>
+
+  <div class=control-group>
+    <%=f.label  :source, 'Paste your Gemfile here:', class: 'lead'%>
+    <%=f.text_area :source, rows: 20, class: 'span8'%>
+  </div>
+  
   <br>
+
   <%=f.submit 'Save Gemfile', class: 'btn btn-success'%>
 <%end%>
