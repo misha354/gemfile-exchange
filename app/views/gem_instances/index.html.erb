@@ -1,0 +1,12 @@
+<table class = 'table'>
+  <tr>
+    <th>Gem Name</th>
+    <th>Number of uses</th>
+  </tr>
+
+  <%@gem_instances.each do |gem_instance|%>
+    <tr>
+      <td><%=gem_instance.name%></td>
+      <td><%=gem_instance.num_gem_uses%></td>
+    </tr>
+  <%end%>
