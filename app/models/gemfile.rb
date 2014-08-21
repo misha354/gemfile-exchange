@@ -1,5 +1,6 @@
 class Gemfile < ActiveRecord::Base
   has_many :gem_uses
+  has_many :votes
 
   validate :validate_source
   validates :name, presence: true
@@ -58,4 +59,15 @@ class Gemfile < ActiveRecord::Base
     end
   end
 
+  def up_votes
+    Vote.where(gemfile: self).where(vote: true).count
+  end
+
+  def down_votes
+    Vote.where(gemfile: self).where(vote: false).count
+  end
+
+  def total_votes 
+    up_votes - down_votes
+  end
 end

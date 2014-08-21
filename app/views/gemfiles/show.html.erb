@@ -14,7 +14,13 @@
       <td><%=gem_use.version%></td>
     </tr>
   <%end%>
- </table>
+</table>
+
+  <p>
+  Did you find this gemfile useful?
+    <%= link_to 'Yes', vote_gemfile_path(@gemfile, vote: true), method: :post%> (<%=@gemfile.up_votes%>)
+    <%= link_to 'No', vote_gemfile_path(@gemfile, vote: true), method: :post%> (<%=@gemfile.down_votes%>)
+  </p>
 
 <div class="accordion" id="accordion2">
   <div class="accordion-group">

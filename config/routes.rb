@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'gem_instances#index'
 
-  resources :gemfiles
+  resources :gemfiles do
+    member do
+      post :vote, to: 'gemfiles#vote'
+    end
+  end
 
   resources :gems, controller: :gem_instances, only: [:show, :index]
 

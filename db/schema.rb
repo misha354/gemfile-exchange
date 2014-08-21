@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821003312) do
+ActiveRecord::Schema.define(version: 20140821180053) do
 
   create_table "gem_instances", force: true do |t|
     t.string   "name"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20140821003312) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer "gemfile_id"
+    t.string  "timestamps"
+    t.boolean "vote"
   end
 
 end

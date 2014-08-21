@@ -16,10 +16,20 @@ class GemfilesController < ApplicationController
   
   def show
     @gemfile = Gemfile.find params[:id]
-    @gem_uses = GemUse.where(gemfile_id: @gemfile.id).each do |gem_use|
+      @gem_uses = GemUse.where(gemfile_id: @gemfile.id).each do |gem_use|
     end
 
     @highlighted_code = display_source(@gemfile.source)
+  end
+
+  def vote
+    @gemfile = Gemfile.find params[:id]
+     
+    vote = Vote.new(vote: params[:vote], gemfile: @gemfile)
+    if !vote.save
+      flash[:notice] = 'You can only vote once'
+    end
+    redirect_to gemfile_path(@gemfile)
   end
 
   private 
@@ -33,4 +43,6 @@ class GemfilesController < ApplicationController
   def gemfile_params
     params.require(:gemfile).permit(:source, :name)
   end
-  end
+
+
+end
