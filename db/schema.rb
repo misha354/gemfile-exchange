@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820200614) do
+ActiveRecord::Schema.define(version: 20140821003312) do
 
   create_table "gem_instances", force: true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140820200614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version"
-    t.integer  "gem_id"
+    t.integer  "gem_instance_id"
   end
 
   create_table "gemfiles", force: true do |t|
