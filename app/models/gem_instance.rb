@@ -1,6 +1,6 @@
 class GemInstance < ActiveRecord::Base
   has_many :gem_uses
-  has_many :gemfiles, through: :gem_use
+  has_many :gemfiles, through: :gem_uses
 
   def num_uses
     GemUse.where(gem_instance: self).count

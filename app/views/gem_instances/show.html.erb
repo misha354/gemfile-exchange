@@ -16,4 +16,18 @@
   <%=link_to @gem_info["project_uri"], @gem_info["project_uri"]%>  
 </div>
 
-<h4>Gemfiles that use this gem</h4>
+<h4>Gemfiles that use this gem:</h4>
+
+<table class='table'>
+  <tr>
+    <th>Application Name</th>
+    <th>Votes</th>
+  </tr>
+
+  <%@gem_instance.gemfiles.each do |gemfile|%>
+    <tr>
+      <td><%=link_to gemfile.name, gemfile_path(gemfile)%></td>
+      <td><%=gemfile.total_votes%></td>
+    </tr>
+    <%end%>
+  </table>
