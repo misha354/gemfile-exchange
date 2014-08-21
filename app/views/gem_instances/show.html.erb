@@ -1,1 +1,8 @@
-<%=@gem_info%>
+<%=render '/shared/header', header: "Gem: #{@gem_info["name"]}"%>
+<div class='well'>
+  <dt>Description:</dt>
+  <dd><%=@gem_info["info"]%></dd>
+
+  <dt>Most used version specifier:<dt>
+  <dd><dd>
+</div>
