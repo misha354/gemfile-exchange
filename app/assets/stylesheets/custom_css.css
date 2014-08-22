@@ -1,3 +1,7 @@
 .wrapped{
   word-wrap:break-word;
 }
+
+.margin{
+  margin:10px;
+}

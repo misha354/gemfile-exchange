@@ -19,6 +19,8 @@ gem 'rouge'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'autoprefixer-rails'
 
+gem 'bcrypt-ruby'
+
 gem 'gems'
 
 # Use jquery as the JavaScript library
