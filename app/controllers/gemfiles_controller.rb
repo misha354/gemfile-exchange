@@ -1,4 +1,6 @@
 class GemfilesController < ApplicationController
+  before_action :require_user, only[:edit, :create, :update, :vote]
+
   def index
     @gemfiles = Gemfile.all.sort_by {|x| x.total_votes}.reverse
   end
