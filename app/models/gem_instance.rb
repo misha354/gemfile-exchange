@@ -3,7 +3,7 @@ class GemInstance < ActiveRecord::Base
   has_many :gemfiles, through: :gem_uses
 
   def num_uses
-    GemUse.where(gem_instance: self).count
+    GemUse.where(gem_instance: self).size
   end
 
   def most_popular_version

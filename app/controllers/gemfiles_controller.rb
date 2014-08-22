@@ -1,4 +1,8 @@
 class GemfilesController < ApplicationController
+  def index
+    @gemfiles = Gemfile.all.sort_by {|x| x.total_votes}.reverse
+  end
+
   def new
     @gemfile = Gemfile.new
   end
@@ -11,7 +15,12 @@ class GemfilesController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def edit
+  end
+
+  def update
   end
   
   def show

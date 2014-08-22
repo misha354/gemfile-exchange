@@ -1,6 +1,6 @@
 class GemInstancesController < ApplicationController
   def index
-    @gem_instances = GemInstance.all.sort_by{|x| x.num_gem_uses}.reverse
+    @gem_instances = GemInstance.all.sort_by {|x| x.num_uses}.reverse
   end
 
   def show

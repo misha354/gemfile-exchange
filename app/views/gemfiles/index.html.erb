@@ -1,6 +1,14 @@
-  hi
-<div class='row'>
-  <div class='span8'>
-    <%= @highlighted_code.html_safe%>
-  </div>
-</div>
+<%=render 'shared/header', header: 'Gemfiles'%>
+
+<table class='table'>
+  <tr>
+    <th>Application name</th>
+    <th>Votes</th>
+
+    <%@gemfiles.each do |gemfile|%>
+      <tr>
+        <td><%=link_to gemfile.name, gemfile_path(gemfile)%></td>
+        <td><%=gemfile.total_votes%></td>
+      </tr>
+    <%end%>
+</table>

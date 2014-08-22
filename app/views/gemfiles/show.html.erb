@@ -1,4 +1,22 @@
-<%=render 'shared/header', header: "Gems used by: #{@gemfile.name}"%>
+<%=render 'shared/header', header: "Application"%>
+
+<div class="pull-right">
+  [<%=link_to Edit, edit_gemfile_path(@gemfile)%>]
+</div>
+
+<div class='well'>
+  
+  <dl class="dl-horizontal">
+    <dt>Name:</dt>
+    <dd><%=@gemfile.name%></dd>
+  
+    <dt>Description:</dt>
+    <dd><%=@gemfile.description%></dd>
+  </dl>
+</div>
+
+<h4>Gems:</h4>
+
 <table class='table well'>
   <tr>
     <th>Gem name</th>
