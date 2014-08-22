@@ -18,9 +18,18 @@ class GemfilesController < ApplicationController
   end
 
   def edit
+    @gemfile = Gemfile.find(params[:id])
   end
 
   def update
+    @gemfile = Gemfile.new(gemfile_params)
+
+    if @gemfile.save
+      flash[:notice] = "Your gemfile was updated."
+      redirect_to gemfile_path(@gemfile)
+    else
+      render 'edit'
+    end
   end
   
   def show
@@ -50,7 +59,7 @@ class GemfilesController < ApplicationController
   end
 
   def gemfile_params
-    params.require(:gemfile).permit(:source, :name)
+    params.require(:gemfile).permit(:source, :name, :description)
   end
 
 

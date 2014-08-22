@@ -1,21 +1,3 @@
+<%= render 'shared/header', header: "Creating application"%>
 <%= render 'shared/errors', obj: @gemfile%>
-<%=form_for @gemfile do |f|%>
-  <div class='control-group'>
-    <%=f.label :name, 'Application name:'%>
-    <%=f.text_field :name%>
-  </div>
-
-  <div class=control-group>
-    <%=f.label  :description, ""%>
-    <%=f.text_area :description, class: 'span8'%>
-  </div>
-
-  <div class=control-group>
-    <%=f.label  :source, "<strong>Paste Gemfile here:</strong>".html_safe%>
-    <%=f.text_area :source, rows: 20, class: 'span8'%>
-  </div>
-  
-  <br>
-
-  <%=f.submit 'Save Gemfile', class: 'btn btn-success'%>
-<%end%>
+<%= render 'form'%>
