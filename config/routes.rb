@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root to: 'gem_instances#index'
 
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy' 
+
   resources :gemfiles do
     member do
       post :vote, to: 'gemfiles#vote'
