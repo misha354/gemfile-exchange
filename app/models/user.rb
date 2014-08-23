@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, on: :create, length: {minimum: 5} 
+  validate :update_password_validation, on: :update
+
+  def update_password_validation
+    if self.password
+        self.errors.add "Password must be at least 5 characters"
+    end
+  end
+
 end
