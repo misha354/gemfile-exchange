@@ -6,6 +6,7 @@
 <br></br>
 
 <div class='well'>
+  
   <div class='row'>
     <div class='span2'>
       <strong>Name:</strong>
@@ -27,7 +28,28 @@
       <%=@gemfile.description%>
     </div>
   </div>
+
+  <br>
+  
+  <div class="row">     
+    <div class='span0 quiet'>
+      posted by:
+    </div>
+
+    <div class='span0'>
+      <%=link_to @gemfile.user.username, user_path(@gemfile.user)%>
+    </div>
+
+    <div class='span0'>
+      <span class='quiet'>on:</span>
+    </div>
+    
+    <div class='span0'>
+      <%=@gemfile.created_at.to_date%>
+    </div>
+  </div>
 </div>
+
 <br>
 
 <h4>Gems:</h4>

@@ -1,9 +1,24 @@
 <div class='row'>
+<<<<<<< HEAD
   <div class='well'>
     <div class='span8 wrapped'>
       <strong>gemfile.name</strong>
       <br>
       <div class='margin'><%gemfile.description%></div>
+=======
+  <div class='well span8'>
+    <div class='row'>
+      <div class='span'>
+        <strong><%=link_to gemfile.name, gemfile_path(gemfile)%>:</strong>
+      </div>
+    </div>
+    
+    <div class='row'>
+      <div class='span'></div>
+      <div class='span6 wrapped margin'>
+        <%=gemfile.description%>
+      </div>
+>>>>>>> gemfile_index
     </div>
   </div>
 </div>

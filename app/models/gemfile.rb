@@ -2,6 +2,7 @@ class Gemfile < ActiveRecord::Base
   has_many :gem_uses
   has_many :gem_instances, through: :gem_use
   has_many :votes
+  belongs_to :user
 
   validate :validate_source
   validates :name, presence: true

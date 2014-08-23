@@ -13,3 +13,7 @@
 .padded{
   padding-top:7px;
 }
+
+.quiet {
+  color: #ababab;
+}

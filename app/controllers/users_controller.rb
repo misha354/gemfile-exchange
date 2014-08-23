@@ -28,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @gemfiles = user.gemfiles
   end
 
   private
