@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   def update_password_validation
     if self.password
-        self.errors.add "Password must be at least 5 characters"
+        self.errors.add :password, "must be at least 5 characters"
     end
   end
 
