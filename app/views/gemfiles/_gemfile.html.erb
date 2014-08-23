@@ -1,24 +1,25 @@
-<div class='row'>
-<<<<<<< HEAD
   <div class='well'>
     <div class='span8 wrapped'>
-      <strong>gemfile.name</strong>
-      <br>
-      <div class='margin'><%gemfile.description%></div>
-=======
-  <div class='well span8'>
-    <div class='row'>
-      <div class='span'>
-        <strong><%=link_to gemfile.name, gemfile_path(gemfile)%>:</strong>
-      </div>
+      <strong><%=gemfile.name%></strong>
     </div>
-    
+
+    <br>
+     
     <div class='row'>
-      <div class='span'></div>
-      <div class='span6 wrapped margin'>
+      <div class='span6 wrapped left-indented'>
         <%=gemfile.description%>
       </div>
->>>>>>> gemfile_index
+    </div>
+ 
+  <div class="row">     
+    <div class='span8' style='padding-left:20px'>
+      <span class='quiet'>posted by:</span>
+ 
+      <%=link_to gemfile.user.username, user_path(gemfile.user)%>
+    
+      <span class='quiet'>on:</span>
+    
+      <%=gemfile.created_at.to_date%>
     </div>
   </div>
 </div>
