@@ -1,0 +1,19 @@
+.wrapped{
+  word-wrap:break-word;
+}
+
+.margin{
+  margin:10px;
+}
+
+.margin-right{
+  margin-right:10px;
+}
+
+.padded{
+  padding-top:7px;
+}
+
+.quiet {
+  color: #ababab;
+}
