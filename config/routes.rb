@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
 
 
-  resources :users, only: [:edit, :update, :show]
   get 'register', to: 'users#new'
   post 'register', to: 'users#create'
+  resources :users, only: [:edit, :create, :update, :show]
 
   resources :gemfiles do
     member do

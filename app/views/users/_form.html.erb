@@ -1,7 +1,7 @@
 <%= render 'shared/errors', obj: @user%>
 <div class='well'>
   
-  <%=form_for @user, url: '/register' do |f|%>
+  <%=form_for @user do |f|%>
     <div class='control-group'>
       <%=f.label :username, 'Choose a user name:'%>
       <%=f.text_field :username%>

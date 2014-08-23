@@ -1,5 +1,6 @@
 class GemfilesController < ApplicationController
-  before_action :require_user, only[:edit, :create, :update, :vote]
+  before_action :require_user, only: [:new, :edit, :create, :update, :vote]
+  before_action :find_gemfile, only: [:edit, :update, :vote]
 
   def index
     @gemfiles = Gemfile.all.sort_by {|x| x.total_votes}.reverse
@@ -11,6 +12,8 @@ class GemfilesController < ApplicationController
 
   def create
     @gemfile = Gemfile.new(gemfile_params)
+    @gemfile.user = current_user
+    
     if @gemfile.save
       flash[:notice] = 'Your Gemfile was saved.'
       redirect_to gemfile_path(@gemfile)
@@ -20,13 +23,10 @@ class GemfilesController < ApplicationController
   end
 
   def edit
-    @gemfile = Gemfile.find(params[:id])
   end
 
   def update
-    @gemfile = Gemfile.new(gemfile_params)
-
-    if @gemfile.save
+    if @gemfile.update(gemfile_params)
       flash[:notice] = "Your gemfile was updated."
       redirect_to gemfile_path(@gemfile)
     else
@@ -42,13 +42,13 @@ class GemfilesController < ApplicationController
     @highlighted_code = display_source(@gemfile.source)
   end
 
-  def vote
-    @gemfile = Gemfile.find params[:id]
-     
+  def vote     
     vote = Vote.new(vote: params[:vote], gemfile: @gemfile)
+    
     if !vote.save
       flash[:notice] = 'You can only vote once'
     end
+    
     redirect_to gemfile_path(@gemfile)
   end
 
@@ -64,5 +64,8 @@ class GemfilesController < ApplicationController
     params.require(:gemfile).permit(:source, :name, :description)
   end
 
+  def find_gemfile
+    @gemfile = Gemfile.find params[:id]
+  end
 
 end
