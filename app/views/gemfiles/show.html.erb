@@ -72,10 +72,14 @@
 </table>
 
   <p>
-  Did you find this gemfile useful?
-    <%= link_to 'Yes', vote_gemfile_path(@gemfile, vote: true), method: :post%> (<%=@gemfile.up_votes%>)
-    <%= link_to 'No', vote_gemfile_path(@gemfile, vote: true), method: :post%> (<%=@gemfile.down_votes%>)
+    <%if logged_in?%>
+      Did you find this Gemfile useful?
+      <%= link_to 'Yes', vote_gemfile_path(@gemfile, vote: true), method: :post%> (<%=@gemfile.up_votes%>)
+    <%else%>
+      <%=@gemfile.up_votes%> user(s) found this Gemfile helpful.
+    <%end%>
   </p>
+
 
 <div class="accordion" id="accordion2">
   <div class="accordion-group">

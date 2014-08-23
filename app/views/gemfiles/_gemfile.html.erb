@@ -1,6 +1,6 @@
   <div class='well'>
     <div class='span8 wrapped'>
-      <strong><%=gemfile.name%></strong>
+      <strong><%=link_to gemfile.name, gemfile_path(gemfile)%></strong>
     </div>
 
     <br>
@@ -21,5 +21,10 @@
     
       <%=gemfile.created_at.to_date%>
     </div>
+    
+    <div class='span pull:right'>
+      Votes: <%=gemfile.total_votes%>
+    </div>
+
   </div>
 </div>
