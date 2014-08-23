@@ -1,8 +1,11 @@
 <%=render 'shared/header', header: "Application: #{@gemfile.name}"%>
 
-<p class="pull-right">
-  [<%=link_to 'Edit', edit_gemfile_path(@gemfile)%>]
-</p>
+<%if logged_in?%>
+  <p class="pull-right">
+    [<%=link_to 'Edit', edit_gemfile_path(@gemfile)%>]
+  </p>
+<%end%>
+
 <br></br>
 
 <div class='well'>
