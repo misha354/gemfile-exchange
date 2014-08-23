@@ -1,28 +1,14 @@
-== README
+#Blackjack#
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*Author:* Mike Zhukovskiy  
 
-Things you may want to cover:
+##Overview
+A blackjack game written in Sinatra for Tealeaf Academy's first course.  
+Uses jquery and the Twitter Bootstrap CSS library.    
 
-* Ruby version
+Navigate to '/' to play.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+##Rules
+* Try to get as close to 21 as possible without going over (busting).
+* Choose "Hit" to be dealt another card or "Stay" to see the dealer's cards
+* Dealer will hit as long as its total is less than or equal to 17
